@@ -324,10 +324,11 @@ public class RDSManagement {
 		int result = 0;
 		try{
 			conn = getConnection();
-			/*String sql = "delete from friend where uid1 = " + userId +
+			String sql = "delete from Friend where (uid1 = " + userId +
+					     " and uid2 = " + friendId +") or (uid1 = " + friendId + " and uid2 = " + userId + ");";
+			/*String sql = "update Friend set states = 3 where uid1 = " +userId + 
 					     " and uid2 = " + friendId;*/
-			String sql = "update Friend set states = 3 where uid1 = " +userId + 
-					     " and uid2 = " + friendId;
+			System.out.println(sql);
 			st = (Statement)conn.createStatement();
 			result = st.executeUpdate(sql);
 			if(result == 0)

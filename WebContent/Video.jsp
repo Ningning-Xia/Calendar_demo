@@ -98,7 +98,7 @@
 				<input type="hidden" name="key" value="<%=videoName%>" />
 				
 				<tr>
-				<td width="20%">  <a class = "button" value = "View" href = "ViewVideoServlet?eid=<%=eid1%>&&key=<%=videoName%>">  View Video</a></td> 
+				<td width="20%" height = "30px">  <a class = "button" value = "View" href = "ViewVideoServlet?eid=<%=eid1%>&&key=<%=videoName%>">  View Video</a></td> 
 					<td>
 						<h4><%=videoName%></h4>
 					</td>
@@ -106,7 +106,7 @@
 					
 				</tr>
 				<tr>	
-				<td width="20%">  <a class = "button" value = "Transform" href = "TransVideoServlet?eid=<%=eid1%>&&key=<%=videoName%>">Transform</a></td>
+				<td width="20%" height = "30px">  <a class = "button" value = "Transform" href = "TransVideoServlet?eid=<%=eid1%>&&key=<%=videoName%>">Transform</a></td>
 				
 				<td><select name="presetID">
 						<option value="1351620000001-000060">Generic 320x240</option>
