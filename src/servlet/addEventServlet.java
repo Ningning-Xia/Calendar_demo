@@ -68,6 +68,12 @@ public class addEventServlet extends HttpServlet {
 		String location = request.getParameter("location");
 		String pic_URL = request.getParameter("picture");
 		String video_URL = request.getParameter("video");
+		if (pic_URL == null) {
+			pic_URL="";
+		}
+		if (video_URL == null) {
+			video_URL="";
+		}
 		String description = request.getParameter("description");
 		int privacy = Integer.parseInt(request.getParameter("privacy"));
 		String tempInviteList = request.getParameter("invitelist");

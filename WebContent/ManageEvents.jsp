@@ -29,13 +29,13 @@
 			<tr>
 				<th>#</th>
 				<th>Event Name</th>
-				<th>Created By</th>
+				<th>Location</th>
 				<th>Start Time</th>
 				<th>End Time</th>
 				<th colspan = "5">Action</th>
 			</tr>
 			<%
-				String ename, startTime, endTime;	
+				String ename, startTime, endTime,location;	
 				int createBy, eid;
 					ArrayList<Event> eventList = (ArrayList<Event>)request.getAttribute("eventList");
 					int size = eventList.size();
@@ -45,6 +45,7 @@
 						startTime = eventList.get(i).getStart_time();
 						endTime = eventList.get(i).getEnd_time();
 						eid = eventList.get(i).getEid();
+						location = eventList.get(i).getLocation();
 			%>
 
 			<tr>
@@ -53,7 +54,7 @@
 					<input type="hidden" name="eid" value=<%=eid%> />
 					<td><%=i+1 %></td>
 					<td><%=ename%></td>
-					<td><%=createBy %></td>
+					<td><%=location %></td>
 					<td><%=startTime%></td>
 					<td><%=endTime%></td>
 					<td><a value="Delete" href = "DeleteEventServlet?key=<%=eid%>">Delete</a></td> 

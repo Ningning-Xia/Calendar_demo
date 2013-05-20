@@ -89,7 +89,7 @@ var password=document.loginForm.password.value;
 
     <div class="container">
 
-      <form class="form-signin" name = "loginForm" onsubmit = "return check()" method="post" action="TestServlet">
+      <form class="form-signin" name = "loginForm" onsubmit = "return check()" method="post" action="LoginServlet">
         <table align = "center">
         <tr> <td align = "center" colspan="2"> 
         <h2 class="form-signin-heading">Login</h2>
