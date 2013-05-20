@@ -162,7 +162,7 @@ public class UploadPhotoServlet extends HttpServlet {
 			}
 		}
 
-		RequestDispatcher view = request.getRequestDispatcher("ListPhotoServlet");
+		RequestDispatcher view = request.getRequestDispatcher("/ListPhotoServlet");
 		view.forward(request, response);
 	}
 

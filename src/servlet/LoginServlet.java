@@ -80,7 +80,7 @@ public class LoginServlet extends HttpServlet {
 				int uid = user.getUid();
 				
 				ArrayList<Event> eventList = new ArrayList<Event>();
-				RDSManagement rds = new RDSManagement();
+				//RDSManagement rds = new RDSManagement();
 				eventList = eventTable.getEventsByTime(uid);
 				request.getSession().setAttribute("eventList", eventList);
 				

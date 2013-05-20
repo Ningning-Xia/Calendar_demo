@@ -13,13 +13,14 @@ public class eventTable {
 
 	private static Connection conn;
 	private static Statement st;
+	private static RDSManagement rds = new RDSManagement();
 
 	public static int addEvent(int uid, String event_name, String start_time,
 			String end_time, String location, String pic_URL, String video_URL,
 			String description, int privacy) {
 		int newEid = 0;
 		try {
-			conn = RDSManagement.getConnection();
+			conn = rds.getConnection();
 			String findMaxEidSql = "select MAX(eid) maxEid from Event;";
 			st = (Statement) conn.createStatement();
 
@@ -64,12 +65,12 @@ public class eventTable {
 	public static Event getEventByName(String ename, int mode) {
 		// mode 0 for show details (need username & action)
 		// mode 1 for edit event (need email list)
-		conn = RDSManagement.getConnection();
+		conn = rds.getConnection();
 		Event event = null;
 		try {
 			ArrayList<ArrayList<String>> uidList = new ArrayList<ArrayList<String>>();
 			
-			String sql = "select * from event where ename = '" + ename + "' ";
+			String sql = "select * from Event where ename = '" + ename + "' ";
 			System.out.println("Select event by name  " + ename);
 
 			st = (Statement) conn.createStatement();
@@ -93,7 +94,7 @@ public class eventTable {
 				for (int i = 0; i < 4; i++){
 					uidList.add(new ArrayList<String>());
 				}
-				sql = "select userName, action from invitation i JOIN User u on i.uid = u.uid where i.eid = "
+				sql = "select userName, action from Invitation i JOIN User u on i.uid = u.uid where i.eid = "
 						+ eid;
 				st = (Statement) conn.createStatement();
 				ResultSet rs_tmp = st.executeQuery(sql);
@@ -104,7 +105,7 @@ public class eventTable {
 					System.out.println("Event id: "+eid+" user: "+userName + " action: " + action);
 				}
 				} else {
-					sql = "select emails from emaillist where eid = "+eid;
+					sql = "select emails from EmailList where eid = "+eid;
 					st = (Statement) conn.createStatement();
 					ResultSet rs_tmp = st.executeQuery(sql);
 					
@@ -142,10 +143,10 @@ public class eventTable {
 
 	
 	public static void deleteEventById(int eid){
-		conn = RDSManagement.getConnection();
+		conn = rds.getConnection();
 		//ArrayList<Video> videoList = new ArrayList<Video>();
 		try {
-			String sql = "delete from event where eid = " + eid ;
+			String sql = "delete from Event where eid = " + eid ;
 			System.out.println(sql);
 			st = (Statement) conn.createStatement();
 			int count = st.executeUpdate(sql);
@@ -164,8 +165,8 @@ public class eventTable {
 			String description, int privacy) {
 		
 		try {
-			conn = RDSManagement.getConnection();
-			String sql = "UPDATE event SET uid="+uid+", ename='"+event_name+"', startTime='"
+			conn = rds.getConnection();
+			String sql = "UPDATE Event SET uid="+uid+", ename='"+event_name+"', startTime='"
 			+start_time+"', endTime='"+ end_time+"', location='"+location+"', description='"
 			+description+"', video='"+video_URL+"', pic='"+pic_URL+"', privacy='"
 			+privacy+"' WHERE eid=" +eid;
@@ -255,7 +256,7 @@ public class eventTable {
 		
 		try {
 			conn = RDSManagement.getConnection();
-			String sql = "UPDATE event SET video='"+videoName+"' where eid =" + eid +";";
+			String sql = "UPDATE Event SET video='"+videoName+"' where eid =" + eid +";";
 			System.out.println(sql);
 			st = (Statement) conn.createStatement();
 			int count = st.executeUpdate(sql);
@@ -286,7 +287,7 @@ public class eventTable {
 			for (int i = 0; i < 4; i++){
 				uidList.add(new ArrayList<String>());
 			}
-			String sql = "select * from event where uid = " + uid
+			String sql = "select * from Event where uid = " + uid
 					+ " order by eid DESC";
 			System.out.println("Select all events for user " + uid
 					+ " sorted by create time");
@@ -306,7 +307,7 @@ public class eventTable {
 				pic = rs.getString("pic");
 				privacy = Integer.parseInt(rs.getString("privacy"));
 				//System.out.println("event id: "+ eid);
-				sql = "select userName, action from invitation i JOIN User u on i.uid = u.uid where i.eid = "
+				sql = "select userName, action from Invitation i JOIN User u on i.uid = u.uid where i.eid = "
 						+ eid;
 				st = (Statement) conn.createStatement();
 				ResultSet rs_tmp = st.executeQuery(sql);

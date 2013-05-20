@@ -73,7 +73,7 @@ public class ViewVideoServlet extends HttpServlet {
 		request.setAttribute("stream", stream);
 		request.setAttribute("download", download);
 
-		RequestDispatcher view = request.getRequestDispatcher("ListVideoServlet");
+		RequestDispatcher view = request.getRequestDispatcher("/ListVideoServlet");
 		view.forward(request, response);
 	}
 

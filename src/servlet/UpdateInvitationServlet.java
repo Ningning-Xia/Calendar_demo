@@ -44,7 +44,7 @@ public class UpdateInvitationServlet extends HttpServlet {
 		System.out.println(eid + " " + uid + " " + action);
 		
 		invitationTable.updateInvitation(eid, uid, action);
-		RequestDispatcher view = request.getRequestDispatcher("listInvitationServlet");
+		RequestDispatcher view = request.getRequestDispatcher("/listInvitationServlet");
 		view.forward(request,response);
 	}
 

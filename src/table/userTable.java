@@ -13,7 +13,7 @@ public class userTable {
 
 	private static Connection conn;
 	private static Statement st;
-	//private RDSManagement rds = new RDSManagement();
+	private static RDSManagement rds = new RDSManagement();
 	
 	public static void main(String[] args) {
 		//User user = getUserByUsername("test7");
@@ -27,7 +27,7 @@ public class userTable {
 		User user = null;
 		
 		try {
-			conn = RDSManagement.getConnection();
+			conn = rds.getConnection();
 			st = (Statement) conn.createStatement();
 			String sql = "select * from User where userName = '" + userName + "';";
 			System.out.println(sql);
@@ -55,7 +55,7 @@ public class userTable {
 	public static boolean checkByUsername(String userName) {
 		boolean valid = true;
 		try {
-			conn = RDSManagement.getConnection();
+			conn = rds.getConnection();
 			st = (Statement) conn.createStatement();
 			String sql = "select * from User where userName = '" + userName + "';";
 			System.out.println(sql);
@@ -83,7 +83,7 @@ public class userTable {
 	public static boolean checkByEmail(String email) {
 		boolean valid = true;
 		try {
-			conn = RDSManagement.getConnection();
+			conn = rds.getConnection();
 			st = (Statement) conn.createStatement();
 			String sql = "select * from User where email = '" + email + "';";
 			System.out.println(sql);
@@ -143,7 +143,7 @@ public class userTable {
 		String email = user.getEmail();
 		String password = user.getPassword();
 		try {
-			conn = RDSManagement.getConnection();
+			conn = rds.getConnection();
 			st = (Statement) conn.createStatement();
 			String sql = "update User set email ='" + email + "', password ='" + password + "' where uid = " + uid + ";"; 
 			System.out.println(sql);
@@ -171,7 +171,7 @@ public class userTable {
 		User user = null;
 		int maxId = 0;
 		try {
-			conn = RDSManagement.getConnection();
+			conn = rds.getConnection();
 			st = (Statement) conn.createStatement();
 			String sql = "SELECT MAX(uid) maxid FROM User;";
 			System.out.println(sql);
