@@ -13,6 +13,7 @@ import table.invitationTable;
 
 import management.RDSManagement;
 import model.Invitation;
+import model.User;
 
 /**
  * Servlet implementation class listInvitationServlet
@@ -41,7 +42,8 @@ public class listInvitationServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		int uid = 1;
+		User user = (User)request.getSession().getAttribute("user");
+		int uid = user.getUid();
 		
 		RDSManagement rds = new RDSManagement();
 		ArrayList<Invitation> inviteList = invitationTable.getInvitationByUid(uid);

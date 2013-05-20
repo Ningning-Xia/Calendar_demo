@@ -28,6 +28,10 @@
 	<br>
 	<br>
 	<div id="main_div">
+	<H2>
+			<font color="white"> Your Photo List: </font>
+		</H2>
+	
 			<form id="form1" method="post"
 			enctype="multipart/form-data">
 			<%
@@ -70,10 +74,16 @@
 		<legend> Photo List </legend>
 
 		<table id="videos">
+		<% if (request.getAttribute("photoList") != null) {
+			%>
 			<tr>
-				<th>File Name</th>
-				<th colspan="3">Action</th>
-			</tr>
+			<th>File Name</th>
+			<th colspan="3">Action</th>
+		</tr>
+			<% }
+			%>
+		
+
 			<%
 					int eid;
 					int pid;

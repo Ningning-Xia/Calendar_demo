@@ -28,7 +28,9 @@
 	<br>
 	<br>
 	<div id="main_div">
-
+	<H2>
+			<font color="white"> Your Video List: </font>
+		</H2>
 
 		<form id="form1" method="post"
 			enctype="multipart/form-data">
@@ -69,17 +71,21 @@
 			</fieldset>
 		</form>
 
-		<H2>
-			<font color="white"> Your Video List: </font>
-		</H2>
+	
+	
 		<%
 			if (request.getAttribute("video") != null) {
 
 				String videoName = (String) request.getAttribute("video");
 				if (!videoName.equals("null")) {
 		%>
-		<form id="form2" method="post">
-			<table>
+		
+		<fieldset>
+			<legend>
+			Your Video
+			</legend>
+			<form id="form2" method="post">
+			<table width = "600px">
 				<%
 					String eid1 = (String)request.getAttribute("eid");
 					if (request.getAttribute("eid") != null) {
@@ -92,7 +98,7 @@
 				<input type="hidden" name="key" value="<%=videoName%>" />
 				
 				<tr>
-				<td>  <a class = "button" value = "View" href = "ViewVideoServlet?eid=<%=eid1%>&&key=<%=videoName%>">View</a></td> 
+				<td width="20%">  <a class = "button" value = "View" href = "ViewVideoServlet?eid=<%=eid1%>&&key=<%=videoName%>">  View Video</a></td> 
 					<td>
 						<h4><%=videoName%></h4>
 					</td>
@@ -100,7 +106,7 @@
 					
 				</tr>
 				<tr>	
-				<td>  <a class = "button" value = "Transform" href = "TransVideoServlet?eid=<%=eid1%>&&key=<%=videoName%>">Transform</a></td>
+				<td width="20%">  <a class = "button" value = "Transform" href = "TransVideoServlet?eid=<%=eid1%>&&key=<%=videoName%>">Transform</a></td>
 				
 				<td><select name="presetID">
 						<option value="1351620000001-000060">Generic 320x240</option>
@@ -136,8 +142,8 @@
 						
 						
 			<tr> 
-				
-				<td colspan="2"> <a href="<%=url%>" title="<%=url%>"><%=url%></a>
+				<td width="20%"> <input type="button" class = "button" value="Download" /> </td> 
+				<td > <a href="<%=url%>" title="<%=url%>"><%=url%></a>
 						<%
 					}
 				%> 
@@ -149,6 +155,11 @@
 			}
 			}
 		%>
+		
+		</fieldset>
+
+<br>
+<br>
 
 		<%
 			String videoname, svideo, dvideo, s, d, src, fsrc = null;
@@ -180,8 +191,8 @@
 					streamer :
 			<%=s%>
 				,
-					width : "720",
-					height : "540",
+					width : "792",
+					height : "594",
 					modes : [ {
 						type : "flash",
 						src : "jwplayer/jwplayer.flash.swf"

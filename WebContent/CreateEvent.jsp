@@ -150,7 +150,7 @@
 				<%
 			}
 		%>
-		<table id="create-event">
+		<table  align = "center" id="create-event" >
 			<tr>
 				<td></td>
 				<td><h1>

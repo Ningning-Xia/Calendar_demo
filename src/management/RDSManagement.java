@@ -409,7 +409,7 @@ public class RDSManagement {
 			for (int i = 0; i < 4; i++){
 				uidList.add(new ArrayList<String>());
 			}
-			String sql = "select * from event where uid = " + uid
+			String sql = "select * from Event where uid = " + uid
 					+ " order by eid DESC";
 			System.out.println("Select all events for user " + uid
 					+ " sorted by create time");
@@ -429,7 +429,7 @@ public class RDSManagement {
 				pic = rs.getString("pic");
 				privacy = Integer.parseInt(rs.getString("privacy"));
 				//System.out.println("event id: "+ eid);
-				sql = "select userName, action from invitation i JOIN User u on i.uid = u.uid where i.eid = "
+				sql = "select userName, action from Invitation i JOIN User u on i.uid = u.uid where i.eid = "
 						+ eid;
 				st = (Statement) conn.createStatement();
 				ResultSet rs_tmp = st.executeQuery(sql);

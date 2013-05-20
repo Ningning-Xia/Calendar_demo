@@ -54,18 +54,20 @@ int size = EventNames.size();%>
 <input type = "hidden" name = "fromUserEmail" value = <%=userEmailAddress %> >
 <table align="center">
 <tr> <td colspan="2"><H2><font color ="white"> Mail Tool: </font> </H2></td></tr>
+<tr> <td colspan="2"> <hr></td> </tr>
 <tr>
-<td><h5> <font color = "white" >Email Address</font></h5></td>
+<td><h5>Email Address</h5></td>
 <td><input type = "text" name = "email" style = "width: 495px;" ></td>
 </tr>
 
 <tr>
-<td><h5> <font color = "white" >Subject </font></h5></td>
+<td><h5>Subject </h5></td>
 
 <td><textarea name = "subject" id = "subject" style = "width: 495px; height: 15px;">
 </textarea></td>
 </tr>
 
+<tr> <td colspan="2"> <hr></td> </tr>
 <tr> <td colspan="2">
 
 
